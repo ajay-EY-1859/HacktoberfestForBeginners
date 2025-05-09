@@ -21,11 +21,15 @@ int main(void) {
 	    int n2;
 	    scanf("%d",&n2);
 	    
-	    int b[n2];
-	    for(int i=0;i<n2;i++)
-	    {
-	        scanf("%d",&b[i]);
-	    }
+		int *b = (int *)malloc(n2 * sizeof(int));
+		if (b == NULL) {
+			printf("Memory allocation failed\n");
+			return 1;
+		}
+		for(int i=0;i<n2;i++)
+		{
+			scanf("%d",&b[i]);
+		}
 	    
 	    int i,j,f=0;
 	    for(i=0,j=0;i<n1&&j<n2;i++)
@@ -45,9 +49,10 @@ int main(void) {
 	        printf("Yes\n");
 	    }
 	    else
-	    {
-	        printf("No\n");
-	    }
+	}
+	free(b);
+	return 0;
+}
 	    
 	}
 	return 0;
